@@ -1,2 +1,2 @@
-# MyCV
-My Personal CV
+# MyPortfolio
+My Personal Portfolio
