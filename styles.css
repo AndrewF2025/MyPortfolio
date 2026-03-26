@@ -70,6 +70,30 @@ main {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    
+/* Hyperlink Styles */
+a {
+    color: #4fc3f7;
+    background-color: transparent;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+a:visited {
+    color: #90caf9;
+}
+
+a:hover, a:focus {
+    color: #ffffff;
+    background-color: #1976d2;
+    text-decoration: underline;
+    outline: none;
+}
+
+a:active {
+    color: #ffb300;
+}
+
 }
 
 section {
