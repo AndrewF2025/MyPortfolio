@@ -63,6 +63,38 @@ nav ul li a:hover {
     color: #cccccc;
 }
 
+/* Generic utility classes for DRY CSS */
+.card {
+    background: #333333;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #404040;
+}
+
+.card.with-left-border {
+    border-left: 4px solid #666666;
+}
+
+.card.with-left-border:hover {
+    border-left-color: #888888;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #404040;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
 /* Main Content Styles */
 main {
     margin-top: 160px;
@@ -70,7 +102,7 @@ main {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    
+
 /* Hyperlink Styles */
 a {
     color: #4fc3f7;
@@ -120,19 +152,11 @@ section p {
 
 /* Services Grid */
 .services-grid {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
 }
 
 .service-card {
-    background: #333333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #666666;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #404040;
 }
 
 .service-card:hover {
@@ -149,11 +173,7 @@ section p {
 
 /* Contact Info */
 .contact-info {
-    background: #333333;
-    padding: 1.5rem;
-    border-radius: 8px;
     margin-top: 1rem;
-    border: 1px solid #404040;
 }
 
 .contact-info p {
@@ -169,39 +189,6 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
     border-top: 1px solid #404040;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    nav ul li {
-        margin: 0.25rem 0;
-    }
-    
-    main {
-        margin-top: 180px;
-        padding: 1rem;
-    }
-    
-    section {
-        padding: 1.5rem;
-    }
-    
-    section h2 {
-        font-size: 1.5rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Smooth Scrolling */
@@ -227,20 +214,10 @@ section {
 }
 
 /* CV Specific Styles */
-.experience-item, .education-item {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #404040;
-}
-
-.experience-item:last-child, .education-item:last-child {
-    border-bottom: none;
-}
-
 .job-header, .degree-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: baseline;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
@@ -254,7 +231,6 @@ section {
 .company, .school {
     color: #cccccc;
     font-weight: bold;
-    margin-left: auto;
 }
 
 .date {
@@ -263,61 +239,38 @@ section {
     margin-left: 1rem;
 }
 
-.job-duties {
+/* Universal custom list style for all CV sections */
+.custom-list {
     list-style: none;
     padding-left: 0;
 }
-
-.job-duties li {
+.custom-list li {
     margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
+    color: #e0e0e0;
     position: relative;
+    padding-left: 1.5rem;
 }
 
-.job-duties li::before {
-    content: "▸";
+.custom-list li::before {
+    content: "•";
     color: #666666;
     position: absolute;
     left: 0;
+    margin-right: 0.5rem;
 }
 
-.certification-section {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #404040;
-}
-
-.certifications {
-    list-style: none;
-    padding-left: 0;
-}
-
-.certifications li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.certifications li::before {
+/* For certifications, use a checkmark instead of a bullet */
+.custom-list.certifications li::before {
     content: "✓";
-    color: #666666;
-    position: absolute;
-    left: 0;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+.custom-list li strong {
+    color: #cccccc;
 }
 
-.skill-category {
-    background: #333333;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid #666666;
-    border: 1px solid #404040;
+.custom-list li p {
+    margin-top: 0.25rem;
+    margin-bottom: 0;
 }
 
 .skill-category h3 {
@@ -328,24 +281,34 @@ section {
     padding-bottom: 0.5rem;
 }
 
-.skill-category ul {
-    list-style: none;
-    padding-left: 0;
+.skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.skill-category li {
-    margin-bottom: 0.5rem;
-    color: #e0e0e0;
-    padding: 0.3rem 0;
+/* Responsive Design */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    main {
+        margin-top: 220px;
+        padding: 0.5rem;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+    
+    section h2 {
+        font-size: 1.2rem;
+    }
 }
 
-.skill-category li::before {
-    content: "•";
-    color: #666666;
-    margin-right: 0.5rem;
-}
-
-/* Responsive Design Updates */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
@@ -353,11 +316,6 @@ section {
     
     .subtitle {
         font-size: 1rem;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
     }
     
     nav ul li {
@@ -379,7 +337,7 @@ section {
     
     .job-header, .degree-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: auto;
     }
     
     .company, .school {
@@ -390,6 +348,10 @@ section {
     .date {
         margin-left: 0;
         margin-top: 0.25rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
     }
     
     .skills-grid {
